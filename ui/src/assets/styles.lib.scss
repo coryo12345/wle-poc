@@ -1,0 +1,181 @@
+/*
+A Library of CSS classes that can be used across components. 
+These are a library, so none are applied to the app by default, and must be used individually.
+*/
+
+@import 'src/assets/variables.scss';
+
+// spacings
+$spaceAmounts: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, auto);
+
+@each $space in $spaceAmounts {
+  @if $space==auto {
+    .ma-#{$space} {
+      margin: #{$space};
+    }
+
+    .mx-#{$space} {
+      margin-left: #{$space};
+      margin-right: #{$space};
+    }
+
+    .my-#{$space} {
+      margin-top: #{$space};
+      margin-bottom: #{$space};
+    }
+
+    .ml-#{$space} {
+      margin-left: #{$space};
+    }
+
+    .mr-#{$space} {
+      margin-right: #{$space};
+    }
+
+    .mb-#{$space} {
+      margin-bottom: #{$space};
+    }
+
+    .mt-#{$space} {
+      margin-top: #{$space};
+    }
+  } @else {
+    .ma-#{$space} {
+      margin: spacing(#{$space});
+    }
+
+    .mx-#{$space} {
+      margin-left: spacing(#{$space});
+      margin-right: spacing(#{$space});
+    }
+
+    .my-#{$space} {
+      margin-top: spacing(#{$space});
+      margin-bottom: spacing(#{$space});
+    }
+
+    .ml-#{$space} {
+      margin-left: spacing(#{$space});
+    }
+
+    .mr-#{$space} {
+      margin-right: spacing(#{$space});
+    }
+
+    .mb-#{$space} {
+      margin-bottom: spacing(#{$space});
+    }
+
+    .mt-#{$space} {
+      margin-top: spacing(#{$space});
+    }
+
+    .pa-#{$space} {
+      padding: spacing(#{$space});
+    }
+
+    .px-#{$space} {
+      padding-left: spacing(#{$space});
+      padding-right: spacing(#{$space});
+    }
+
+    .py-#{$space} {
+      padding-top: spacing(#{$space});
+      padding-bottom: spacing(#{$space});
+    }
+
+    .pl-#{$space} {
+      padding-left: spacing(#{$space});
+    }
+
+    .pr-#{$space} {
+      padding-right: spacing(#{$space});
+    }
+
+    .pb-#{$space} {
+      padding-bottom: spacing(#{$space});
+    }
+
+    .pt-#{$space} {
+      padding-top: spacing(#{$space});
+    }
+  }
+}
+
+// display
+.d-flex {
+  display: flex;
+}
+
+.d-block {
+  display: block;
+}
+
+.d-inline {
+  display: inline;
+}
+
+.d-inline-block {
+  display: inline-block;
+}
+
+// flex helpers
+.justify-start {
+  justify-content: start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: end;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.justify-space-around {
+  justify-content: space-around;
+}
+
+.justify-space-evenly {
+  justify-content: space-evenly;
+}
+
+.align-stretch {
+  align-items: stretch;
+}
+
+.align-start {
+  align-items: start;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-end {
+  align-items: end;
+}
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.bold {
+  font-weight: bold;
+}

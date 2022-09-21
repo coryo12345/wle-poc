@@ -1,0 +1,34 @@
+version: "3.5"
+
+volumes:
+  pocketbase-volume:
+    name: pocketbase-volume
+
+services:
+  pocketbase:
+    container_name: pocketbase
+    build:
+      context: ./realtime
+      dockerfile: ./Dockerfile
+    image: pocketbase:latest
+    volumes:
+      - pocketbase-volume:/app/pocketbase/pb_data
+    ports:
+      - "8090:8090"
+    platform: linux/amd64
+
+  # verse-service:
+  #   container_name: wle-verse
+  #   build: ./verse-service
+  #   image: wle-verse-service:latest
+  #   ports:
+  #     - "8001:8001"
+  #   platform: linux/amd64
+
+  # ui:
+  #   container_name: wle-ui
+  #   build: ./ui
+  #   image: wle-ui:latest
+  #   ports:
+  #     - 8000:80
+  #   platform: linux/amd64

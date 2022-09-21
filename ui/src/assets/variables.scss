@@ -1,0 +1,8 @@
+// common css functions or variables needed to be referenced in components
+
+@function spacing($num) {
+  @return calc($num * 4px);
+}
+
+$card-width: 600px;
+$card-width-large: 800px;
