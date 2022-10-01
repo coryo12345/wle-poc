@@ -1,9 +1,5 @@
 version: "3.5"
 
-volumes:
-  pocketbase-volume:
-    name: pocketbase-volume
-
 services:
   pocketbase:
     container_name: pocketbase
@@ -12,7 +8,7 @@ services:
       dockerfile: ./Dockerfile
     image: pocketbase:latest
     volumes:
-      - pocketbase-volume:/app/pocketbase/pb_data
+      - ./realtime/pb_data:/app/pocketbase/pb_data
     ports:
       - "8090:8090"
     platform: linux/amd64

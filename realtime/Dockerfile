@@ -1,19 +1,17 @@
-FROM alpine:latest
+FROM golang:1.19.1-alpine
 
-ARG POCKETBASE_VERSION=0.7.4
+RUN apk add build-base
 
-RUN apk add --no-cache \
-    ca-certificates \
-    unzip \
-    wget \
-    zip \
-    zlib-dev
+WORKDIR /app
 
-ADD https://github.com/pocketbase/pocketbase/releases/download/v${POCKETBASE_VERSION}/pocketbase_${POCKETBASE_VERSION}_linux_amd64.zip /app/pocketbase/pocketbase.zip
-RUN unzip /app/pocketbase/pocketbase.zip -d /app/pocketbase
-RUN chmod +x /app/pocketbase/pocketbase
-RUN rm /app/pocketbase/pocketbase.zip
+# pre-copy/cache go.mod for pre-downloading dependencies and only redownloading them in subsequent builds if they change
+COPY go.mod go.sum ./
+RUN go mod download && go mod verify
+# RUN go mod tidy
+
+COPY . .
+RUN go build -v -o pocketbase.app
 
 EXPOSE 8090
 
-CMD [ "/app/pocketbase/pocketbase", "serve", "--http", "0.0.0.0:8090" ]
+CMD ["/app/pocketbase.app", "serve", "--http", "0.0.0.0:8090"]

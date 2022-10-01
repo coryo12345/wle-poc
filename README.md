@@ -21,9 +21,6 @@ A standalone, stateless service for retrieving verse text using standard WLE ver
 * Express
 
 ## Running Locally
-You can run the stack with docker compose. Pocketbase does not have start-up import of collection definitions, so you will have to import them manually.
-1. `docker compose up`
-2. Navigate to: http://localhost:8090/_ to view the admin panel for PocketBase.
-3. Create an admin account with any email/password.
-4. Go to Settings -> Import Collections
-5. Import the pb_schema.json file located at `realtime/pb_schema.json`.
+TODO: move all services to docker containers
+You can run the stack with docker compose.
+* `docker compose up`

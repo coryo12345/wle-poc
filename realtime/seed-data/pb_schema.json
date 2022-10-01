@@ -1,0 +1,193 @@
+[
+    {
+        "id": "systemprofiles0",
+        "created": "2022-09-17 17:55:30.892",
+        "updated": "2022-09-20 02:23:36.671",
+        "name": "profiles",
+        "system": true,
+        "schema": [
+            {
+                "system": true,
+                "id": "pbfielduser",
+                "name": "userId",
+                "type": "user",
+                "required": true,
+                "unique": true,
+                "options": {
+                    "maxSelect": 1,
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "system": false,
+                "id": "pbfieldname",
+                "name": "name",
+                "type": "text",
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            },
+            {
+                "system": false,
+                "id": "pbfieldavatar",
+                "name": "avatar",
+                "type": "file",
+                "required": false,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "maxSize": 5242880,
+                    "mimeTypes": [
+                        "image/jpg",
+                        "image/jpeg",
+                        "image/png",
+                        "image/svg+xml",
+                        "image/gif"
+                    ],
+                    "thumbs": null
+                }
+            },
+            {
+                "system": false,
+                "id": "wiuadrxc",
+                "name": "preferredTranslation",
+                "type": "text",
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": "userId = @request.user.id",
+        "viewRule": "userId = @request.user.id",
+        "createRule": "userId = @request.user.id",
+        "updateRule": "userId = @request.user.id",
+        "deleteRule": null
+    },
+    {
+        "id": "h5k73356hrnzuga",
+        "created": "2022-09-17 17:56:46.008",
+        "updated": "2022-09-17 17:56:46.008",
+        "name": "themes",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "fcum39eh",
+                "name": "name",
+                "type": "text",
+                "required": true,
+                "unique": true,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": null,
+        "updateRule": null,
+        "deleteRule": null
+    },
+    {
+        "id": "0xa3bj6ilbiyb1k",
+        "created": "2022-09-17 17:56:46.010",
+        "updated": "2022-09-19 23:16:12.489",
+        "name": "tags",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "v5gvwxrh",
+                "name": "user",
+                "type": "user",
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "system": false,
+                "id": "h5f3vrua",
+                "name": "theme",
+                "type": "relation",
+                "required": true,
+                "unique": false,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "h5k73356hrnzuga",
+                    "cascadeDelete": true
+                }
+            },
+            {
+                "system": false,
+                "id": "julktqp3",
+                "name": "verseId",
+                "type": "text",
+                "required": true,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": "",
+        "viewRule": "",
+        "createRule": "@request.user.id = user",
+        "updateRule": "@request.user.id = user",
+        "deleteRule": "@request.user.id = user"
+    },
+    {
+        "id": "d23ub7xc7wd6abh",
+        "created": "2022-09-17 17:56:46.012",
+        "updated": "2022-09-17 17:56:46.012",
+        "name": "tag_details",
+        "system": false,
+        "schema": [
+            {
+                "system": false,
+                "id": "iqh4o3hz",
+                "name": "tag",
+                "type": "relation",
+                "required": true,
+                "unique": true,
+                "options": {
+                    "maxSelect": 1,
+                    "collectionId": "0xa3bj6ilbiyb1k",
+                    "cascadeDelete": false
+                }
+            },
+            {
+                "system": false,
+                "id": "m0mspkft",
+                "name": "comment",
+                "type": "text",
+                "required": false,
+                "unique": false,
+                "options": {
+                    "min": null,
+                    "max": null,
+                    "pattern": ""
+                }
+            }
+        ],
+        "listRule": "@request.user.id = tag.user",
+        "viewRule": "@request.user.id = tag.user",
+        "createRule": "@request.user.id = tag.user",
+        "updateRule": "@request.user.id = tag.user",
+        "deleteRule": null
+    }
+]

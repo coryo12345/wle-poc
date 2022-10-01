@@ -1,0 +1,4 @@
+.dockerignore
+Dockerfile
+pb_data/
+pocketbase.app
