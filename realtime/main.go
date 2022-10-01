@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"log"
 
 	"wle/migrations"
@@ -14,8 +13,9 @@ func main() {
 	migrations.Init_data()
 
 	app := pocketbase.New()
-	app.Settings().Meta.AppName = "WLE"
-	fmt.Println("appname: " + app.Settings().Meta.AppName)
+
+	// Uncomment the following line in localhost to save mail content as file instead of using mail server
+	// dev_hooks.SaveMail(app)
 
 	if err := app.Start(); err != nil {
 		log.Fatal(err)

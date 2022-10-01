@@ -25,3 +25,4 @@ dist-ssr
 
 pb_data/
 realtime/pocketbase.app
+realtime/dev_data/*
