@@ -176,6 +176,10 @@ $spaceAmounts: (0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, auto);
   flex-wrap: wrap;
 }
 
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
 .bold {
   font-weight: bold;
 }

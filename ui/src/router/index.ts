@@ -9,7 +9,8 @@ import HomeContainer from 'src/views/home/HomeContainer.vue';
 import ThemesContainer from 'src/views/themes/ThemesContainer.vue';
 import VersesContainer from 'src/views/verses/VersesContainer.vue';
 import ViewVerse from 'src/views/verses/ViewVerse.vue';
-import ViewTheme from '../views/themes/ViewTheme.vue';
+import ViewTheme from 'src/views/themes/ViewTheme.vue';
+import UserProfile from 'src/views/auth/UserProfile.vue';
 import { refreshToken, logout } from 'src/services/authService';
 
 const authStore = useAuthStore();
@@ -26,6 +27,7 @@ const routes = [
     component: MainApp,
     children: [
       { path: '/', component: HomeContainer },
+      { path: '/profile', component: UserProfile },
       { path: '/themes', component: ThemesContainer },
       { path: '/theme/:name', component: ViewTheme },
       { path: '/verses', component: VersesContainer },
