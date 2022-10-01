@@ -2,9 +2,9 @@
 import { UserFilled } from '@element-plus/icons-vue';
 import GlobalSearch from 'src/components/header/GlobalSearch.vue';
 import { computed } from 'vue';
-import { useClient } from 'src/services/config';
 import { useAuthStore } from 'src/store/authStore';
 import { useRouter } from 'vue-router';
+import { logout } from 'src/services/authService';
 
 const authStore = useAuthStore();
 const router = useRouter();
@@ -12,12 +12,6 @@ const router = useRouter();
 const userName = computed(() => {
   return authStore.getUserName();
 });
-
-function logout() {
-  const client = useClient();
-  client.authStore.clear();
-  window.location.reload();
-}
 
 function goHome() {
   router.push('/');

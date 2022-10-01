@@ -2,6 +2,8 @@
 
 import { User } from 'pocketbase';
 import { useClient } from 'src/services/config';
+import jwtDecode from 'jwt-decode';
+import { JWT } from 'src/models/jwt';
 
 export type AuthProviderInfo = {
   name: string;
@@ -29,8 +31,16 @@ export function useAuthStore() {
     return 'Unknown';
   }
 
+  function getTokenExpDate() {
+    const encodedToken = client.authStore.token;
+    if (!encodedToken) return new Date(0);
+    const decodedToken = jwtDecode<JWT>(encodedToken);
+    return new Date(decodedToken.exp * 1000); // convert to ms
+  }
+
   return {
     getUser,
     getUserName,
+    getTokenExpDate,
   };
 }

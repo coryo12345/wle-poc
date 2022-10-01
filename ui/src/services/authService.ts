@@ -39,3 +39,14 @@ export async function getAuthMethods() {
   const authMethods = await client.users.listAuthMethods();
   return authMethods.authProviders as AuthProviderInfo[];
 }
+
+export function logout() {
+  client.authStore.clear();
+  window.location.reload();
+}
+
+export async function refreshToken() {
+  const response = await client.users.refresh();
+  console.log(response);
+  return response.token;
+}
