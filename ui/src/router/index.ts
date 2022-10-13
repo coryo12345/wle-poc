@@ -3,8 +3,8 @@ import { createRouter, createWebHistory } from 'vue-router';
 import LoginContainer from 'src/views/auth/LoginContainer.vue';
 import RegisterContainer from 'src/views/auth/RegisterContainer.vue';
 import MainApp from 'src/views/MainApp.vue';
-import OAuthLogin from 'src/views/auth/OAuthLogin.vue';
-import OAuthRedirect from 'src/views/auth/OAuthRedirect.vue';
+// import OAuthLogin from 'src/views/auth/OAuthLogin.vue';
+// import OAuthRedirect from 'src/views/auth/OAuthRedirect.vue';
 import HomeContainer from 'src/views/home/HomeContainer.vue';
 import ThemesContainer from 'src/views/themes/ThemesContainer.vue';
 import VersesContainer from 'src/views/verses/VersesContainer.vue';
@@ -52,6 +52,6 @@ router.beforeEach(async () => {
     await refreshToken();
   } catch (err) {
     // failed to refresh the token, logout...
-    logout();
+    logout(false);
   }
 });

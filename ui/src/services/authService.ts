@@ -40,9 +40,9 @@ export async function getAuthMethods() {
   return authMethods.authProviders as AuthProviderInfo[];
 }
 
-export function logout() {
+export function logout(reload: boolean = true) {
   client.authStore.clear();
-  window.location.reload();
+  if (reload) window.location.reload();
 }
 
 export async function refreshToken() {

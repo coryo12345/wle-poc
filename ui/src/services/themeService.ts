@@ -41,7 +41,6 @@ export async function getTagsByVerseAndUser(verseId: string) {
 export async function getTagsByThemeAndUser(themeId: string) {
   const user = authStore.getUser();
   if (!user) return [];
-  console.log(user.id, themeId);
   const response = await client.records.getFullList('tags', 200, {
     filter: `(user = '${user.id}' && theme = '${themeId}')`,
     sort: '-created',

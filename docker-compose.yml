@@ -1,30 +1,35 @@
 version: "3.5"
 
 services:
-  pocketbase:
-    container_name: pocketbase
+  realtime:
+    container_name: wle-realtime
     build:
       context: ./realtime
       dockerfile: ./Dockerfile
-    image: pocketbase:latest
+    image: wle-realtime:latest
     volumes:
-      - ./realtime/pb_data:/app/pocketbase/pb_data
+      - ./realtime/pb_data:/app/pb_data
     ports:
       - "8090:8090"
     platform: linux/amd64
 
-  # verse-service:
-  #   container_name: wle-verse
-  #   build: ./verse-service
-  #   image: wle-verse-service:latest
-  #   ports:
-  #     - "8001:8001"
-  #   platform: linux/amd64
+  verse-service:
+    container_name: wle-verse-service
+    build: ./verse-service
+    image: wle-verse-service:latest
+    ports:
+      - "8001:8001"
+    platform: linux/amd64
 
-  # ui:
-  #   container_name: wle-ui
-  #   build: ./ui
-  #   image: wle-ui:latest
-  #   ports:
-  #     - 8000:80
-  #   platform: linux/amd64
+  # The UI & Proxy
+  # The proxy could probably become it's own service in the future, but this works for now
+  ui:
+    container_name: wle-ui
+    build: ./ui
+    image: wle-ui:latest
+    ports:
+      - 8000:80
+    platform: linux/amd64
+    depends_on:
+      - "realtime"
+      - "verse-service"
